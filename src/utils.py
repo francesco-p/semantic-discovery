@@ -70,7 +70,7 @@ def get_pred(img, final_partition_nodes,segments):
     return pred
 
 
-def findBestPartition_alt(adj_mat, min_cl=2, alpha=1, viz=True):
+def findBestPartition_alt(adj_mat, alpha=1, viz=True):
     """Corrosion algorithm devised
     adj_mat: Adjacency matrix of the graph 
     min_cl: the minimum number of nodes composing a subgraph (default 2)
@@ -79,7 +79,7 @@ def findBestPartition_alt(adj_mat, min_cl=2, alpha=1, viz=True):
     """
     partition_scores = []
     best_npartition = -1
-
+    min_cl=2
     max_score = previous_score =  -np.inf
     adj_mat2 = adj_mat.copy()
     for npartition,min_weight in enumerate(np.unique(adj_mat2)):
@@ -126,7 +126,7 @@ def findBestPartition_alt(adj_mat, min_cl=2, alpha=1, viz=True):
     
     return best_partition_nodes, best_partition
 
-def gkern(kernlen=21, nsig=3):
+def gkern(kernlen: int=21, nsig: int=3) -> np.ndarray:
     """Returns a 2D Gaussian kernel."""
 
     x = np.linspace(-nsig, nsig, kernlen+1)
@@ -135,7 +135,7 @@ def gkern(kernlen=21, nsig=3):
     return kern2d/kern2d.sum()
 
 
-def eu_dist(p1, p2):
+def eu_dist(p1:tuple, p2:tuple) -> np.array:
     """Computes euclidead distance"""
     return np.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
 

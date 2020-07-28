@@ -1,11 +1,9 @@
-"""
-This is temporary code, it is now under refactoring by the author. It is meant to be a working example for the reviewers
-"""
 import numpy as np
 import scipy.stats as st
+import utils
 
 class Accumulator:
-    """ This class purpose is to hold the splash accumulator """
+    """ This class (is a mess) purpose is to hold the splash accumulator """
 
     def __init__(self, img):
 
@@ -25,7 +23,7 @@ class Accumulator:
     def add_vote(self, origin, destination, rank, ksize=31, ksig=3):
         
         # Generate the kernel to vote
-        k = self.gkern(ksize,ksig)
+        k = utils.gkern(ksize, ksig)
         k /= k.max()
         k *= 1/rank
         offs = k.shape[0]//2
@@ -41,35 +39,29 @@ class Accumulator:
             tmp = self.accumulator[accu_point[0]-offs:accu_point[0]+offs+1, accu_point[1]-offs:accu_point[1]+offs+1]
             self.accumulator[accu_point[0]-offs:accu_point[0]+offs+1, accu_point[1]-offs:accu_point[1]+offs+1] += k[:tmp.shape[0], :tmp.shape[1]]
 
-            # Vote accumulator
-            # currently it's saving only the central vote
+            # V set
+            # currently it's saving only the central vote for better memory vs precision...
             if self.init:
-                self.votes = np.array([[accu_point[0],accu_point[1], origin[0], origin[1],destination[0], destination[1]]])
+                self.votes = np.array([[accu_point[0], accu_point[1], origin[0], origin[1],destination[0], destination[1]]])
                 self.init = False
             else:
-                self.votes = np.concatenate((self.votes, np.array([[accu_point[0],accu_point[1], origin[0], origin[1],destination[0], destination[1]]])), axis=0)
+                self.votes = np.concatenate((self.votes, np.array([[accu_point[0], accu_point[1], origin[0], origin[1], destination[0], destination[1]]])), axis=0)
 
     
-    def add_splash(self, origin, points):
+    def add_splash(self, origin, endpoints):
         
         # Centering the origin
         dy = -1*origin[0]
         dx = -1*origin[1]
 
-        # Centering all the other points
+        # Centering all the other endpoints
         npoints = []
-        for p in points:
+        for p in endpoints:
             accu_point = (p[0]+dy+self.accumulator_center[0], p[1]+dx+self.accumulator_center[1])
             npoints.append(accu_point)
         
-        # Save the splash cohordinate is the key, at position 0 you have the points in img reference
-        # at position 1 you have the src points in accumulator reference 
-        self.splashes[origin] = points, npoints
+        # Save the splash cohordinate is the key, at position 0 you have the endpoints in img reference
+        # at position 1 you have the src endpoints in accumulator reference 
+        self.splashes[origin] = endpoints, npoints
 
-    def gkern(self,kernlen=21, nsig=3):
-        """Returns a 2D Gaussian kernel."""
 
-        x = np.linspace(-nsig, nsig, kernlen+1)
-        kern1d = np.diff(st.norm.cdf(x))
-        kern2d = np.outer(kern1d, kern1d)
-        return kern2d/kern2d.sum()
