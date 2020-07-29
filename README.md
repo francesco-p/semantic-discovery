@@ -24,13 +24,13 @@ The folder structure you should at this point is:
 │   └── ...
 ├── fig1.png
 ├── notebooks
-│   ├── 01-run.ipynb
-│   └── 02-dataset.ipynb
-├── output
+│   ├── 01-run.ipynb      <-- Interactive run of the method on an image
+│   └── 02-dataset.ipynb  <-- Dataset Visualization
+├── output                <-- Output of scripts/run.py
 │   └── img01.png
 ├── README.md
 ├── scripts
-│   └── run.py
+│   └── run.py            <-- Run the method to an image
 └── src
     ├── accumulator.py
     ├── detector.py
