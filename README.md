@@ -5,7 +5,9 @@ Release code of paper _"Unsupervised semantic discovery through visual patterns 
 ![semantical_levels](fig1.png)
 
 
-# Run 
+# How to Run 
+
+## Jupyter Notebook
 
 1. Clone the repo:
 
@@ -57,6 +59,10 @@ Replace `/path/to/...` with the absolute path of the cloned repo. If you reached
 Now you have access the jupyter lab environment, and you can start play around.
 
 > **Note:** if port `8889` is already taken, substitute it with another one.
+
+## Python script
+
+If you want to run the method in the console, please simply follow the *Jupyter Notebook* instructions up to step 3. After that just run the script `run.py` in the folder `scripts/`. All the parameters (input image, output image, algorithm params) can be specified by hacking directily the params section of the file.
 
 
 # Dataset
