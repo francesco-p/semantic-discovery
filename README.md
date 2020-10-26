@@ -1,6 +1,6 @@
 # patterns-detection-icpr2020
 
-Release code of paper _"Unsupervised semantic discovery through visual patterns detection - Pelosin F., Gasparetto A., Albarelli A., Torsello A."_ submitted to ICPR 2020.
+Release code of paper _"Unsupervised semantic discovery through visual patterns detection - Pelosin F., Gasparetto A., Albarelli A., Torsello A."_ submitted to S+SSPR 2020.
 
 ![semantical_levels](fig1.png)
 
