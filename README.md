@@ -1,4 +1,4 @@
-# patterns-detection-icpr2020
+# patterns-detection-S+SSPR2020
 
 Release code of paper _"Unsupervised semantic discovery through visual patterns detection - Pelosin F., Gasparetto A., Albarelli A., Torsello A."_ submitted to S+SSPR 2020.
 
