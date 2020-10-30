@@ -50,7 +50,9 @@ Release code of paper _"Unsupervised semantic discovery through visual patterns 
    
    `jupyter-lab --allow-root --port=8889 --ip=0.0.0.0 --no-browser`
 
-5. If you want to run the method in the console, please simply follow the *Jupyter Notebook* instructions up to step 3. Then run `python run.py` in the folder `scripts/`. All the parameters (input image, output image, algorithm params) can be specified by changing directily the params section of the file.
+   Now just connect to the prompted link.
+
+5. If you want to run the method in the console, please simply follow the instructions up to step 3. Then run `python run.py` in the folder `scripts/`. All the parameters (input image, output image, algorithm params) can be specified by changing directily the params section of the file.
 
 
 # Dataset Visualization
