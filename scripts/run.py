@@ -29,7 +29,7 @@ W = 5
 TAU = 1                             
 N_SUPERPIXELS = 80                  
 ALPHA = 1                           
-INPUT_FILE = "../datasets/img01.png" 
+INPUT_FILE = "./img01.png" 
 OUTPUT_FILE = "../output/img01.png"  
 ####################################
 
