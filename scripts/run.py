@@ -15,7 +15,6 @@ import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 from skimage.segmentation import slic
-import ipdb 
 import logging
 
 logging.basicConfig(level=logging.INFO)
